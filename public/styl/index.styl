@@ -1,12 +1,34 @@
+// everything is indented, just like jade. no syntax
+
 .index
   text-align: center
   h1
     margin: 20px 0
 
   a
+    // here we use the variable set in shared.styl
     color: $linkColor
     text-decoration: none
     font-size: 24px
 
+    // & works just like in LESS, it applies to the thing above it, in this case, the a tag.
     &:hover
       text-decoration: underline
+
+// make sure to NEVER put a tag in your stylus page that has no attributes
+// example: because .bar has nothing, IT WILL CRASH
+
+// .bleh
+//   color: blue
+//   .foo
+//     color: red
+//   .bar
+
+
+// example: because .foo has nothing, it will take all the styles from .bar
+
+// .bleh
+//   color: blue
+//   .foo
+//   .bar
+//     color: red

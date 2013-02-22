@@ -6,7 +6,6 @@ block content
 
     //- a comment like this will not show up in the rendered html
     // this comment will
-
     - console.log('any line starting with a - is javascript')
 
     div heres a basic div
@@ -14,14 +13,57 @@ block content
     - var msg = 'javascript also follows = signs after tags'
     div= msg
 
+    button just words are tags
+    .test periods denote classes (default tag is div)
+    #test and #'s denote id's (default tag is div)
+    div.woot#hi you can stack them
+
+    //- notice that everything after the = is javascript, hence the quotation marks
+    .foo(style='color: green;', data-id='joe') attributes are set in ()'s and seperated by commas
+      .nested this is a nested class, based on indenting
+    div(class='a', id='b') you can also set classes and ids in here
+
+    div the third way to do javascript is like this: 8 + 4 = #{8 + 4}
+    //- it's not as pretty, we try to avoid it...
+
+    div if you need multiple lines 
+      | on the same tag you can 
+      | do it like this 
+
+    //- that is all inside the div tag. ( a string seperated by a link )
+    div for example, visit my 
+      a(href='/profile') profile
+      | !
+
     //- jade has a built in if-else statement
     if 4 + 7 === 11
       div i can do basic math!
     else
       div i suck :(
 
+    unless 4 === 5
+      div unless is the same as saying if (!expression)
+
     //- you can do the same thing with a javascript if
     - if (4 === 5)
       div well that didn't work
     - else
       div hi there
+      div no need for {}, its all based on indenting
+
+
+    //- here is jade's built in for-loop. it isn't what you might expect
+    div it's more like a for each loop
+      for text in ['it', 'iterates', 'for', 'every', 'item', 'in', 'the', 'array']
+        span= text + " "
+
+    //- you can also take the index
+    for num, i in [4, 5, 6]
+      div= 'index ' + i + ' is ' + num
+
+    div of course, you can still use javascript if you need it 
+      - for (var i = 0; i < 10; ++i)
+        span= i + " "
+
+
+

@@ -15,11 +15,16 @@
 
     .toolbar-item
 
-      colors = red, green, blue
+      // here is an array, no syntax :)
+      colors = red green blue
+
+      // for loops are a lot like jade's. they are for-each loops
       for num in 2 3 4
+        // sometimes your variable needs escaped, here's how, with {}
         &:nth-child({num})
           a
             &:hover
+              // in this case, directly following a colon, it didn't need escaped
               background-color: colors[num - 2]
 
       a
