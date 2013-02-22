@@ -1,0 +1,59 @@
+.profile
+  text-align: center
+
+  .profile-box
+    padding: 10px
+
+    .data
+      text-align: left
+      display: inline-block
+      vertical-align: top
+      width: 600px
+
+      .section
+        padding: 20px 50px
+        background-color: #ddd
+
+        for num in 0 2 4 6 8 10 12 14
+          &:nth-child({num})
+            background-color: #aaa
+
+        .value
+          float: right
+
+        .bar
+          background-color: white
+          height: 20px
+
+          .progress
+            background-color: blue
+            height: 100%
+
+  .notifications
+    margin: 0 auto
+    text-align: left
+    background-color: #ccc
+    width: 600px
+
+    .notification
+      .name
+        padding: 10px
+        display: inline-block
+        vertical-align: top
+        width: 100px
+
+      .text
+        padding: 10px
+        display: inline-block
+        width: 400px
+
+      .close
+        float: right
+        cursor: pointer
+        background-color: #aaa
+        padding: 5px 10px
+        margin: 5px
+
+        &:hover
+          background-color: #888
+

@@ -1,5 +1,23 @@
+//- extends basically copies all the code from the that file and pastes it here
 extends ../layout
 
+//- block statements
+//- this will look into all the previously written code in this file (and extended files)
+//- if it finds another 'block content', it will replace anything inside that block content
+//- with the code that follows it.
 block content
-  h1 Welcome to myGame
-  canvas#game
+  .index
+    h1 Examples
+    div
+      a(href='/basics') the basics
+    div
+      a(href='/mixins') using mixins
+    div
+      a(href='/profile') loading data from the server
+
+//- append statements
+//- append is much like block. it will find the previous 'block scripts' statement. but instead
+//- of replacing it, it just adds onto it.
+append scripts
+  script
+    console.log('don\'t you worry. Your precious jquery was still loaded.');

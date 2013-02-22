@@ -1,0 +1,56 @@
+extends ../layout
+
+mixin label(key, val)
+  .section
+    .value= val
+    .label= key
+
+mixin progress(part, whole)
+  - var w = part / whole * 100 + '%'
+  .section
+    .bar
+      .progress(style="width:" + w)
+
+block content
+
+  .profile
+    h1 Profile
+
+    //- remember how we passed the user object in?
+    //- lets call JSON stringify and make sure we have it
+    .rawData= JSON.stringify(user)
+
+    .profile-box(style='background-color:' + user.color)
+      img(src=user.pictureURL, height=400)
+
+      .data
+        - var announce = 'It\'s not your birthday :(.'
+        - var today = new Date()
+        - if (today.getMonth() === user.birthday.getMonth() && today.getDate() === user.birthday.getDate())
+          - announce = 'It\'s your birthday!!'
+        +label('Name', user.name)
+        +label('Birthday', user.birthday)
+        +label('Age', user.age)
+        +label('Level', user.level)
+        +label('Announcement', announce)
+        +progress(user.level, 100)
+    button Get Notification
+    .notifications
+
+append scripts
+  script
+    var NAMES = ['Bubba', 'Greg', 'John', 'Ferdinand', 'Frank', 'Charles', 'Umbutu', 'X2F01'];
+    var MSGS = ['Hey Dude, let\'s hang out!!', 'Annoying Friend Request!!!one!!1!', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '\'Sup Buddy?'];
+
+    var render = require('/client/requires/render');
+    $('button').click(function (e) {
+      var stuffs = {
+        name: NAMES[Math.floor(Math.random() * (NAMES.length - 1))],
+        msg: MSGS[Math.floor(Math.random() * (MSGS.length - 1))]
+      };
+      $('.notifications').append(render('announcement', stuffs));
+
+      $('.close').click(function (e) {
+        $(this).closest('.notification').remove();
+      });
+    });

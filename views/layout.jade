@@ -1,12 +1,17 @@
+//- This is the basic layout of a page
+//- notice that its all indented like python
+//- no need for end tags
 doctype 5
 html
   head
+    //- I explain what blocks do in index/index.jade
     block title
-      title myGame
+      title Examples
     block styles
       link(rel='stylesheet', href='/css/main.css')
   body
     block content
+      p I'm going to be replaced!
     block scripts
       script(src='/js/lib/jquery.js')
       script(src='/js/app.js')

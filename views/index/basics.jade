@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  .basics
+    h1 Basics
+
+    //- a comment like this will not show up in the rendered html
+    // this comment will
+
+    - console.log('any line starting with a - is javascript')
+
+    div heres a basic div
+
+    - var msg = 'javascript also follows = signs after tags'
+    div= msg
+
+    //- jade has a built in if-else statement
+    if 4 + 7 === 11
+      div i can do basic math!
+    else
+      div i suck :(
+
+    //- you can do the same thing with a javascript if
+    - if (4 === 5)
+      div well that didn't work
+    - else
+      div hi there

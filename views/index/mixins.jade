@@ -1,0 +1,27 @@
+extends ../layout
+
+//- mixins can be defined straight in the code, like so, or they can be included.
+mixin cool-link(name, link)
+  a(href=link + '?ourSpecial=parameter', attributes)= name
+  //- 'attributes' are all the attributes applied to that mixin
+
+//- include works like extends. It takes the code and puts it here. usually you
+//- use it for mixins but you can also include sections of jade throughout you file.
+//- if you include a folder, it will look for and include index.jade within that folder.
+include ../components/toolbar
+
+block content
+
+  .mixins
+    h1 Mixins
+
+    //- Here's how to call a mixin
+    +toolbar('My ToolBar')
+      //- and here are some nested mixins, that will be appended to the 'block' in toolbar
+      +item('home', '/', 'left')
+      +item('basics', '/basics')
+      +item('profile', '/profile')
+
+    +cool-link('click me to go home with specials', '/')(style='color: green;')
+    //- see how i set the 'style' of the mixin to 'color: green'? That attribute
+    //- will be passed on and applied inside the cool-link mixin.

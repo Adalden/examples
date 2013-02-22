@@ -1,0 +1,27 @@
+//- here's how to define a mixin, give it a name and parameter list
+mixin toolbar(title)
+  //- anything in here will be rendered when you call the mixin
+  - title = title || ''
+  .toolbar-container
+    .toolbar
+      .toolbar-title= title
+      //- this block statement says that everything nested underneath toolbar() goes here
+      //- see the example at the bottom
+      block
+
+//- careful when naming mixins. you want to avoid conflicts
+//- item would probably be a terrible name cuz its too common
+mixin item(name, link, align)
+  //- you probably notice i don't use a lot of semicolons
+  //- in jade, i think it's safer not to use them
+  //- otherwise they might actually show up on the page
+  - align = (align === 'left') ? 'left' : 'right'
+  .toolbar-item(style='float:' + align)
+    a(href=link)= name
+
+
+
+//- example - that p tag would be put where block is
+
+//- +toolbar('test')
+//-   p hey guys
